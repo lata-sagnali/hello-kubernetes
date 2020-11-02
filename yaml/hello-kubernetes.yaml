@@ -11,31 +11,22 @@ spec:
   selector:
     app: hello-kubernetes
 ---
-apiVersion: app.ibm.com/v1alpha1
-kind: Deployable
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: hello-kubernetes-deploy
-  namespace: default
+  name: hello-kubernetes
 spec:
-  template:
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: hello-kubernetes
+  replicas: 3
+  selector:
+    matchLabels:
       app: hello-kubernetes
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
     spec:
-      replicas: 3
-      selector:
-        matchLabels:
-          app: hello-kubernetes
-      template:
-        metadata:
-          labels:
-            app: hello-kubernetes
-        spec:
-          containers:
-          - name: hello-kubernetes
-            image: paulbouwer/hello-kubernetes:1.8
-            imagePullPolicy: Always
-            ports:
-            - containerPort: 8080
+      containers:
+      - name: hello-kubernetes
+        image: paulbouwer/hello-kubernetes:1.8
+        ports:
+        - containerPort: 8080
