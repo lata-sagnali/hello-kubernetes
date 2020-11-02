@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: hello-kubernetes
   app: hello-kubernetes
-  env: dev
+  labels:
+    environment: dev
 spec:
   type: LoadBalancer
   ports:
