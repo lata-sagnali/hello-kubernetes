@@ -4,7 +4,7 @@ metadata:
   name: hello-kubernetes
   app: hello-kubernetes
   labels:
-    environment: dev
+    environment: test
 spec:
   type: LoadBalancer
   ports:
