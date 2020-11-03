@@ -4,6 +4,7 @@ metadata:
   name: hello-kubernetes
   labels: 
     app: hello-kubernetes
+    dev-approved: ready
 spec:
   replicas: 3
   selector:
