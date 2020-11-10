@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes-python
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-kubernetes-custom
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes-custom
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: docker1774/python:2.0
+        ports:
+        - containerPort: 8081
+        env:
+        - name: MESSAGE
+          value: I just deployed this on Kubernetes!
