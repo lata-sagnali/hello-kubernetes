@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-kubernetes-python
+  namespace: nginx-entitlement
 spec:
   replicas: 3
   selector:
@@ -16,7 +17,9 @@ spec:
       - name: hello-kubernetes
         image: docker1774/python:2.0
         ports:
-        - containerPort: 8081
+        - containerPort: 8081 
         env:
         - name: MESSAGE
           value: I just deployed this on Kubernetes!
+      imagePullSecrets:
+      - name: regsecret
